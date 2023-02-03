@@ -8,7 +8,7 @@ use std::sync::Arc;
 use tokio::sync::Mutex;
 
 /// Abstracts a cypher query that is sent to neo4j server.
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Query {
     query: String,
     params: BoltMap,
