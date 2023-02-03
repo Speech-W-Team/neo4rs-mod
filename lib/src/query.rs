@@ -33,6 +33,7 @@ impl Query {
         connection: Arc<Mutex<ManagedConnection>>,
     ) -> Result<()> {
         let run = BoltRequest::run(&config.db, &self.query, self.params.clone());
+        dbg!(&run);
         let mut connection = connection.lock().await;
         match connection.send_recv(run).await? {
             BoltResponse::SuccessMessage(_) => {
